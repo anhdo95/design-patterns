@@ -33,10 +33,19 @@ function Insurance(macbook) {
   }
 }
 
+// Decorator 4
+function Discount(macbook) {
+  const baseCost = macbook.cost()
+  macbook.cost = function() {
+    return Math.round(baseCost * 0.8) // discount 20%
+  }
+}
+
 const macbook = new Macbook()
 Memory(macbook)
 Engraving(macbook)
 Insurance(macbook)
+Discount(macbook)
 
-console.log(macbook.cost()) // 1829
+console.log(macbook.cost()) // 1463
 console.log(macbook.screenSize()) // 13.3
